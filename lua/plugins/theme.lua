@@ -51,7 +51,7 @@ return {
 			},
 			disable = {
 				background = false,
-				float_background = true,
+				float_background = false,
 				cursorline = false,
 				eob_lines = true,
 			},
@@ -73,24 +73,21 @@ return {
 				NvimTreeIndentMarker = { fg = _M.colors.grey12 },
 
 				NormalFloat = { bg = _M.colors.grey15 },
-				FloatBorder = { bg = _M.colors.grey14, fg = _M.colors.grey10 },
+				FloatBorder = { bg = _M.colors.grey14, fg = _M.colors.grey19 },
 
 				TelescopePromptPrefix = { bg = _M.colors.grey14 }, -- Icon >
 				TelescopePromptNormal = { bg = _M.colors.grey14 },
 				TelescopeResultsNormal = { bg = _M.colors.grey15 }, -- List
 				TelescopePreviewNormal = { bg = _M.colors.grey16 },
-
 				TelescopePromptBorder = { bg = _M.colors.grey14, fg = _M.colors.grey14 },
 				TelescopeResultsBorder = { bg = _M.colors.grey15, fg = _M.colors.grey15 },
 				TelescopePreviewBorder = { bg = _M.colors.grey16, fg = _M.colors.grey16 },
-
 				TelescopePromptTitle = { fg = _M.colors.grey14 },
 				TelescopeResultsTitle = { fg = _M.colors.grey15 },
 				TelescopePreviewTitle = { fg = _M.colors.grey16 },
 
-        LazyGitFloat = { bg = _M.colors.grey15 },
-        LazyGitFloatBorder = { bg = "puple" },
-        -- LazyGitBorder = { bg = _M.colors.grey16 },
+				LazyGitFloat = { bg = _M.colors.grey14 },
+				LazyGitBorder = { bg = _M.colors.grey15, fg = _M.colors.grey19 },
 
 				PmenuSel = { bg = _M.colors.grey12 },
 				Pmenu = { bg = _M.colors.grey14 },
