@@ -72,7 +72,7 @@ return {
 				NvimTreeFolderIcon = { fg = _M.colors.grey9 },
 				NvimTreeIndentMarker = { fg = _M.colors.grey12 },
 
-				NormalFloat = { bg = _M.colors.grey14 },
+				NormalFloat = { bg = _M.colors.grey15 },
 				FloatBorder = { bg = _M.colors.grey14, fg = _M.colors.grey10 },
 
 				TelescopePromptPrefix = { bg = _M.colors.grey14 }, -- Icon >
@@ -87,6 +87,10 @@ return {
 				TelescopePromptTitle = { fg = _M.colors.grey14 },
 				TelescopeResultsTitle = { fg = _M.colors.grey15 },
 				TelescopePreviewTitle = { fg = _M.colors.grey16 },
+
+        LazyGitFloat = { bg = _M.colors.grey15 },
+        LazyGitFloatBorder = { bg = "puple" },
+        -- LazyGitBorder = { bg = _M.colors.grey16 },
 
 				PmenuSel = { bg = _M.colors.grey12 },
 				Pmenu = { bg = _M.colors.grey14 },
