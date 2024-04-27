@@ -72,7 +72,7 @@ return {
 				NvimTreeFolderIcon = { fg = _M.colors.grey9 },
 				NvimTreeIndentMarker = { fg = _M.colors.grey12 },
 
-				--NormalFloat = { bg = _M.colors.grey15 },
+				NormalFloat = { bg = _M.colors.grey15 },
 				FloatBorder = { bg = _M.colors.bg, fg = _M.colors.yellow },
 
 				TelescopePromptPrefix = { bg = _M.colors.grey14 }, -- Icon >
