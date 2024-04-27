@@ -23,6 +23,6 @@ return {
 				},
 			},
 		})
-		vim.keymap.set("n", "<C-/>", ":ToggleTerm<CR>", {})
+		vim.keymap.set("n", "<leader>tt", ":ToggleTerm<CR>", {})
 	end,
 }
