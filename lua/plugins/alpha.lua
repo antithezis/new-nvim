@@ -1,12 +1,19 @@
 return {
-  "goolord/alpha-nvim",
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-  },
+	"goolord/alpha-nvim",
+	dependencies = {
+		"nvim-tree/nvim-web-devicons",
+	},
 
-  config = function()
-    local alpha = require("alpha")
-    local dashboard = require("alpha.themes.startify")
+	config = function()
+		local alpha = require("alpha")
+		local dashboard = require("alpha.themes.dashboard")
+
+    local function button(sc, txt, keybind, keybind_opts)
+        local b = dashboard.button(sc, txt, keybind, keybind_opts)
+        b.opts.hl = "DashboardShortCut"
+        b.opts.hl_shortcut = "DashboardHeader"
+        return b
+    end
 
     dashboard.section.header.val = {
       [[                                                                       ]],
@@ -26,6 +33,15 @@ return {
       [[                                                                       ]],
     }
 
+    dashboard.section.buttons.val = {
+        button("הּ f f", "  Find File", "<cmd>Telescope find_files<cr>"),
+        button("הּ f o", "  Recents", "<cmd>Telescope oldfiles<cr>"),
+        button("הּ f g", "  Find Word", "<cmd>Telescope live_grep<cr>"),
+        button("הּ f m", "  Bookmarks", "<cmd>Telescope marks<cr>"),
+    }
+    dashboard.section.footer.val = "github.com/antithezis"
+    dashboard.section.footer.opts.hl = "DashboardFooter"
+
     alpha.setup(dashboard.opts)
-  end,
+	end,
 }
