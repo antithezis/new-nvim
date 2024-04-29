@@ -20,3 +20,10 @@ vim.wo.relativenumber = true
 -- Config clipboard
 vim.opt.clipboard = "unnamedplus"
 
+-- Delete all buffers but the current one --
+vim.keymap.set(
+  "n",
+  "<leader>bq",
+  '<Esc>:%bdelete|edit #|normal`"<Return>',
+  { desc = "Delete other buffers but the current one" }
+)
