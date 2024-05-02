@@ -4,6 +4,8 @@ vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 vim.g.mapleader = " "
 vim.g.background = "light"
+vim.g.user_emmet_leader_key = ","
+vim.g.user_emmet_mode = "n"
 
 vim.opt.swapfile = false
 
