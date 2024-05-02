@@ -16,6 +16,7 @@ return {
 		"hrsh7th/nvim-cmp",
 		config = function()
 			local cmp = require("cmp")
+      local icons = require("utils.utils").icons
 			require("luasnip.loaders.from_vscode").lazy_load()
 
 			cmp.setup({
@@ -28,6 +29,13 @@ return {
 					completion = cmp.config.window.bordered(),
 					documentation = cmp.config.window.bordered(),
 				},
+        formatting = {
+          fields = { "kind", "abbr", "menu" },
+          format = function(entry, vim_item)
+            vim_item.kind = icons[vim_item.kind]
+            return vim_item
+          end,
+        },
 				mapping = cmp.mapping.preset.insert({
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
