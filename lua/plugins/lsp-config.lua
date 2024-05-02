@@ -11,6 +11,12 @@ return {
 		lazy = false,
 		opts = {
 			auto_install = true,
+      ensure_installed = {
+        "lua_ls",
+        "tsserver",
+        "angularls",
+        "cssls",
+      },
 		},
 	},
 	{
@@ -21,9 +27,6 @@ return {
 
 			local lspconfig = require("lspconfig")
 			lspconfig.tsserver.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.solargraph.setup({
 				capabilities = capabilities,
 			})
       lspconfig.angularls.setup({
