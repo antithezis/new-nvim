@@ -59,7 +59,7 @@ return {
 		"nvim-lualine/lualine.nvim",
 		config = function()
 			local lualine = require("lualine")
-			local colors = require("utils.utils").colors
+			local colors = require("configs.utils").colors
 			local mode_color = {
 				n = colors.cyan,
 				i = colors.green,
@@ -321,7 +321,7 @@ return {
 	{
 		"rmehri01/onenord.nvim",
 		config = function()
-			local colors = require("utils.utils").colors
+			local colors = require("configs.utils").colors
 			require("onenord").setup({
 				theme = nil,
 				borders = false,
