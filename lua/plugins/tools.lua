@@ -37,19 +37,9 @@ return {
       dependencies = { "luarocks.nvim" },
       config = function()
         require("rest-nvim").setup()
+        vim.keymap.set("n", "<leader>rr", ":Rest run <CR>")
+        vim.keymap.set("n", "<leader>rl", ":Rest run last <CR>")
       end,
-      keys = {
-        {
-          "<leader>rr",
-          "<cmd>Rest run<cr>",
-          desc = "Run request under the cursor",
-        },
-        {
-          "<leader>rl",
-          "<cmd>Rest run last<cr>",
-          desc = "Re-run latest request",
-        },
-      },
     },
   },
 }
