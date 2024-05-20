@@ -13,6 +13,7 @@ return {
     "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
     "j-hui/fidget.nvim",
+    "github/copilot.vim",
   },
   config = function()
     require("fidget").setup({})
@@ -46,6 +47,13 @@ return {
         ["<C-e>"] = cmp.mapping.abort(),
         ["C-y"] = cmp.mapping.confirm({ select = true })
       }),
+      formatting = {
+        fields = {"abbr", "kind", "menu"},
+        format = function (_, vim_item)
+          vim_item.kind = require("config.utils").icons[vim_item.kind]
+          return vim_item
+        end
+      },
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
