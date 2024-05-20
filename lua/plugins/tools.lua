@@ -1,5 +1,8 @@
 return {
   {
+    "ThePrimeagen/vim-be-good"
+  },
+  {
     "epwalsh/obsidian.nvim",
     version = "*",
     lazy = true,
