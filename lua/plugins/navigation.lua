@@ -33,10 +33,10 @@ return {
     "alexghergh/nvim-tmux-navigation",
     config = function()
       require('nvim-tmux-navigation').setup({})
-      vim.keymap.set("n", "<C-h>", ":NvimTmuxNavigateLeft<CR>", {})
-      vim.keymap.set("n", "<C-j>", ":NvimTmuxNavigateDown<CR>", {})
-      vim.keymap.set("n", "<C-k>", ":NvimTmuxNavigateUp<CR>", {})
-      vim.keymap.set("n", "<C-l>", ":NvimTmuxNavigateRight<CR>", {})
+      vim.keymap.set("n", "<C-h>", ":NvimTmuxNavigateLeft<CR>", { silent = true })
+      vim.keymap.set("n", "<C-j>", ":NvimTmuxNavigateDown<CR>", { silent = true })
+      vim.keymap.set("n", "<C-k>", ":NvimTmuxNavigateUp<CR>", { silent = true })
+      vim.keymap.set("n", "<C-l>", ":NvimTmuxNavigateRight<CR>", { silent = true })
     end,
   },
   {
@@ -47,5 +47,4 @@ return {
       vim.keymap.set("n", "-", oil.toggle_float, {})
     end,
   }
-
 }
