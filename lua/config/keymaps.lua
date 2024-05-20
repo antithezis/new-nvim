@@ -6,4 +6,4 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set('n', '<Esc>', ':noh<CR>')
 
-vim.keymap.set( "n", "<leader>bo", ':%bd|e#|bd#<CR>', { slient = true })
+vim.keymap.set( "n", "<leader>bo", ':%bd|e#|bd#<CR>', { silent = true })
