@@ -1,6 +1,7 @@
 return {
   { "ThePrimeagen/vim-be-good" },
   { "tpope/vim-surround" },
+  { "michaeljsmith/vim-indent-object" },
   {
     "windwp/nvim-autopairs",
     event = "VeryLazy",
