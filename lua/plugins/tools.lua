@@ -2,6 +2,7 @@ return {
   { "ThePrimeagen/vim-be-good" },
   { "tpope/vim-surround" },
   { "michaeljsmith/vim-indent-object" },
+  { "mbbill/undotree" },
   {
     "windwp/nvim-autopairs",
     event = "VeryLazy",
