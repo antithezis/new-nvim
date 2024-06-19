@@ -1,4 +1,5 @@
 return {
+  { "echasnovski/mini.indentscope", opts = {} },
   {
     "catppuccin/nvim",
     lazy = false,
