@@ -18,7 +18,6 @@ return {
           "markdown",
           "angular",
           "lua",
-          "http",
         },
         highlight = { enable = true },
         indent = { enable = true },
