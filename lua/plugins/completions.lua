@@ -27,7 +27,7 @@ return {
       },
       handlers = {
         function(server_name)
-          require("lspconfig")[server_name].setup{}
+          require("lspconfig")[server_name].setup {}
         end
       }
     })
@@ -48,8 +48,8 @@ return {
         ["C-y"] = cmp.mapping.confirm({ select = true })
       }),
       formatting = {
-        fields = {"abbr", "kind", "menu"},
-        format = function (_, vim_item)
+        fields = { "abbr", "kind", "menu" },
+        format = function(_, vim_item)
           vim_item.kind = require("config.utils").icons[vim_item.kind]
           return vim_item
         end
@@ -59,8 +59,8 @@ return {
         { name = 'luasnip' },
         { name = 'emoji' },
       }, {
-          { name = 'buffer' },
-        })
+        { name = 'buffer' },
+      })
     })
 
     vim.diagnostic.config({
@@ -81,5 +81,6 @@ return {
     vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, {})
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
+    vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, {})
   end,
 }
