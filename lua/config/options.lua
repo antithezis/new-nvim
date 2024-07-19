@@ -11,3 +11,4 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.foldmethod = "manual"
+vim.opt.fillchars = { eob = " " }
