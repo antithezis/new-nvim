@@ -3,6 +3,7 @@ return {
   { "tpope/vim-surround" },
   { "michaeljsmith/vim-indent-object" },
   { "mbbill/undotree" },
+  { "metakirby5/codi.vim" },
   {
     "windwp/nvim-autopairs",
     event = "VeryLazy",
