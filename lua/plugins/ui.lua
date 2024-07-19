@@ -1,7 +1,23 @@
 return {
   { "echasnovski/mini.indentscope", opts = {} },
   {
+    "neanias/everforest-nvim",
+    version = false,
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("everforest").setup({
+        background = "hard",
+        italis = true,
+        transparent_background_level = 1,
+        diagnostic_virtual_text = "coloured",
+      })
+      vim.cmd.colorscheme "everforest"
+    end,
+  },
+  {
     "catppuccin/nvim",
+    enabled = false,
     lazy = false,
     name = "catppuccin",
     priority = 1000,
@@ -14,7 +30,8 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require("lualine").setup({
-        options = { theme = "palenight" }
+        -- palenight for catppuccin
+        options = { theme = "everforest" }
       })
     end
   },
@@ -31,12 +48,22 @@ return {
     lazy = false, -- As https://github.com/nvimdev/dashboard-nvim/pull/450, dashboard-nvim shouldn't be lazy-loaded to properly handle stdin.
     opts = function()
       local logo = [[
-         ██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗          Z
-         ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║      Z    
-         ██║     ███████║  ███╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║   z       
-         ██║     ██╔══██║ ███╔╝    ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║ z         
-         ███████╗██║  ██║███████╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║           
-         ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝           
+     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠶⠀⠀⠀⠀⠀⣈⣿⣦⠀⠀⠀⠀
+     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⡿⠋⠀⠀⠀⠀⠀⠹⣿⣿⡆⠀⠀⠀
+     ⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⣿⣤⣤⣴⣤⣤⣄⠀⢠⣿⣿⠇⠀⠀⠀
+     ⠀⠀⠀⠀⠀⠀⠀⠀⢸⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀
+     ⠀⠀⠀⠀⠀⠀⠀⠀⣾⠋⠈⢻⣿⡝⠁⠀⢻⣿⣿⠋⠀⠀⠀⠀⠀
+     ⠀⠀⠀⠀⠀⠀⠀⠈⣿⣄⣠⣿⣿⣧⣀⣠⣿⣿⣿⠀⠀⠀⠀⠀⠀
+     ⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀
+     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣿⣿⣿⣿⣿⣿⡿⠟⠀⣀⠀⠀⠀⠀⠀
+     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣷⡾⠿⠛⠀⠀⠀⠀⠀
+     ⠀⠀⠀⠀⠀⢀⣠⣴⣿⣿⣿⣿⣿⣿⣿⣿⡿⠓⠀⠀⠀⠀⠀⠀⠀
+     ⠀⠀⢀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣀⡀⠀⠀⠀⠀⠀
+     ⠀⣰⡟⠉⣼⣿⠟⣡⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣤⡀⠀
+     ⢠⣿⠀⠀⣿⣿⣾⠿⠛⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡛⠻⠑⡀
+     ⠈⣿⠀⡼⢿⡏⠀⠀⠀⠹⣿⡆⠉⠻⣿⣿⣿⣿⣿⡻⢿⣿⠷⠞⠁
+     ⠀⢸⠇⠀⠈⡇⠀⠀⠀⠀⠘⢿⡄⠀⠸⡏⠀⠀⠉⡇⠀⠹⢦⡄⠀
+     ⠀⠀⠀⠀⠈⠁⠀⠀⠀⠀⠀⠸⠁⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀
     ]]
 
       logo = string.rep("\n", 8) .. logo .. "\n\n"
@@ -52,15 +79,15 @@ return {
           header = vim.split(logo, "\n"),
           -- stylua: ignore
           center = {
-            { action = "Telescope find_files",                                     desc = " Find File",       icon = " ", key = "f" },
-            { action = "ene | startinsert",                                        desc = " New File",        icon = " ", key = "n" },
-            { action = "Telescope oldfiles",                                       desc = " Recent Files",    icon = " ", key = "r" },
-            { action = "Telescope live_grep",                                      desc = " Find Text",       icon = " ", key = "g" },
+            { action = "Telescope find_files", desc = " Find File", icon = " ", key = "f" },
+            { action = "ene | startinsert", desc = " New File", icon = " ", key = "n" },
+            { action = "Telescope oldfiles", desc = " Recent Files", icon = " ", key = "r" },
+            { action = "Telescope live_grep", desc = " Find Text", icon = " ", key = "g" },
             -- { action = [[lua LazyVim.telescope.config_files()()]],                 desc = " Config",          icon = " ", key = "c" },
-            { action = 'lua require("persistence").load()',                        desc = " Restore Session", icon = " ", key = "s" },
-            { action = "LazyExtras",                                               desc = " Lazy Extras",     icon = " ", key = "x" },
-            { action = "Lazy",                                                     desc = " Lazy",            icon = "󰒲 ", key = "l" },
-            { action = "qa",                                                       desc = " Quit",            icon = " ", key = "q" },
+            { action = 'lua require("persistence").load()', desc = " Restore Session", icon = " ", key = "s" },
+            { action = "LazyExtras", desc = " Lazy Extras", icon = " ", key = "x" },
+            { action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
+            { action = "qa", desc = " Quit", icon = " ", key = "q" },
           },
           footer = function()
             local stats = require("lazy").stats()
