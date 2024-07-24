@@ -2,6 +2,7 @@ return {
   { "echasnovski/mini.indentscope", opts = {} },
   {
     "neanias/everforest-nvim",
+    enabled = true,
     version = false,
     lazy = false,
     priority = 1000,
@@ -31,7 +32,8 @@ return {
     config = function()
       require("lualine").setup({
         -- palenight for catppuccin
-        options = { theme = "everforest" }
+        options = { theme = "palenight" }
+        -- options = { theme = "everforest" }
       })
     end
   },
