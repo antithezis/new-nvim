@@ -2,7 +2,10 @@ local function augroup(name)
   return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
 end
 
-vim.api.nvim_create_autocmd("ColorScheme", {
+local fn = vim.fn
+local autocmd = vim.api.nvim_create_autocmd
+
+autocmd("ColorScheme", {
   pattern = "*",
   callback = function()
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -15,7 +18,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   end,
 })
 
-vim.api.nvim_create_autocmd("TextYankPost", {
+autocmd("TextYankPost", {
   group = augroup("highlight_yank"),
   callback = function()
     vim.highlight.on_yank()
@@ -23,7 +26,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- close some filetypes with <q>
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
   group = augroup("close_with_q"),
   pattern = {
     "PlenaryTestPopup",
@@ -49,5 +52,30 @@ vim.api.nvim_create_autocmd("FileType", {
       silent = true,
       desc = "Quit buffer",
     })
+  end,
+})
+
+local hl_ns = vim.api.nvim_create_namespace('search')
+local hlsearch_group = vim.api.nvim_create_augroup('hlsearch_group', { clear = true })
+
+local function manage_hlsearch(char)
+  local key = vim.fn.keytrans(char)
+  local keys = { '<CR>', 'n', 'N', '*', '#', '?', '/', 'z' }
+
+  if vim.fn.mode() == 'n' then
+    if not vim.tbl_contains(keys, key) then
+      vim.cmd([[ :set nohlsearch ]])
+    elseif vim.tbl_contains(keys, key) then
+      vim.cmd([[ :set hlsearch ]])
+    end
+  end
+
+  vim.on_key(nil, hl_ns)
+end
+
+vim.api.nvim_create_autocmd('CursorMoved', {
+  group = hlsearch_group,
+  callback = function()
+    vim.on_key(manage_hlsearch, hl_ns)
   end,
 })
