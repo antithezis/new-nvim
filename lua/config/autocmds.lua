@@ -12,6 +12,21 @@ autocmd("ColorScheme", {
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
     vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none", fg = "#d2a8ff" })
     vim.api.nvim_set_hl(0, "FloatTitle", { bg = "none" })
+
+    -- vim.api.nvim_set_hl(0, "LspFloatWinNormal", { bg = "red", fg = "red" })
+    -- vim.api.nvim_set_hl(0, "LspFloatWinBorder", { bg = "red", fg = "red" })
+
+    -- TelescopePromptPrefix 
+    -- TelescopePromptNormal 
+    -- TelescopeResultsNormal 
+    -- TelescopePreviewNormal 
+    -- TelescopePromptBorder 
+    -- TelescopeResultsBorder 
+    -- TelescopePreviewBorder 
+    -- TelescopePromptTitle  
+    -- TelescopeResultsTitle 
+    -- TelescopePreviewTitle 
+
   end,
 })
 
