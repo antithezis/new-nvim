@@ -1,10 +1,7 @@
--- FIXME: This is a mess, I need to clean this up
 return {
   "neovim/nvim-lspconfig",
   event = "BufReadPre",
   dependencies = {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
@@ -12,18 +9,16 @@ return {
     "hrsh7th/cmp-emoji",
     "hrsh7th/nvim-cmp",
     "L3MON4D3/LuaSnip",
-    "saadparwaiz1/cmp_luasnip",
-    "rafamadriz/friendly-snippets",
     "j-hui/fidget.nvim",
     "github/copilot.vim",
+    "saadparwaiz1/cmp_luasnip",
+    "rafamadriz/friendly-snippets",
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
   },
   config = function()
     require("fidget").setup()
     require("mason").setup()
-
-    local lsp = vim.lsp
-
-    lsp.handlers["textDocument/hover"] = lsp.with(lsp.handlers.hover, { border = "rounded" })
 
     require("mason-lspconfig").setup({
       ensure_installed = {
@@ -36,7 +31,7 @@ return {
         function(server_name)
           require("lspconfig")[server_name].setup {}
         end
-      }
+      },
     })
 
     local cmp = require('cmp')
@@ -75,24 +70,39 @@ return {
       })
     })
 
-    vim.diagnostic.config({
-      update_in_insert = true,
-      float = {
-        focusable = false,
-        style = "minimal",
-        border = "rounded",
-        source = "always",
-        header = "",
-        prefix = "",
-      }
-    })
+    local diagnostic_signs = {
+      { name = "DiagnosticSignError", text = "" },
+      { name = "DiagnosticSignWarn", text = "" },
+      { name = "DiagnosticSignHint", text = "" },
+      { name = "DiagnosticSignInfo", text = "" },
+    }
+    for _, sign in ipairs(diagnostic_signs) do
+      vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
+    end
 
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {})
-    vim.keymap.set("n", "ca", vim.lsp.buf.code_action, {})
-    vim.keymap.set("n", "rn", vim.lsp.buf.rename, {})
-    vim.keymap.set("n", "<C-M-j>", vim.lsp.buf.format, {})
+    local lsp = {
+      float = {
+        border = "rounded",
+        focusable = true,
+        style = "minimal",
+      },
+      diagnostic = {
+        virtual_text = { prefix = "", spacing = 4, },
+        underline = true,
+        update_in_insert = true,
+        severity_sort = true,
+        float = {
+          border = "rounded",
+          focusable = false,
+          source = "always",
+          style = "minimal",
+        }
+      }
+    }
+
+    vim.diagnostic.config(lsp.diagnostic)
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, lsp.float)
+    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, lsp.float)
+
   end,
 }
