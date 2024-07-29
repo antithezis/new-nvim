@@ -1,5 +1,7 @@
+-- FIXME: This is a mess, I need to clean this up
 return {
   "neovim/nvim-lspconfig",
+  event = "BufReadPre",
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
@@ -16,8 +18,13 @@ return {
     "github/copilot.vim",
   },
   config = function()
-    require("fidget").setup({})
+    require("fidget").setup()
     require("mason").setup()
+
+    local lsp = vim.lsp
+
+    lsp.handlers["textDocument/hover"] = lsp.with(lsp.handlers.hover, { border = "rounded" })
+
     require("mason-lspconfig").setup({
       ensure_installed = {
         "angularls",
@@ -33,7 +40,6 @@ return {
     })
 
     local cmp = require('cmp')
-    -- local cmp_select = { behavior = cmp.SelectBehavior.Select }
     require("luasnip.loaders.from_vscode").lazy_load()
 
     cmp.setup({
@@ -42,11 +48,16 @@ return {
           require('luasnip').lsp_expand(args.body)
         end,
       },
+      window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      },
       mapping = cmp.mapping.preset.insert({
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
         ["C-y"] = cmp.mapping.confirm({ select = true })
       }),
+
       formatting = {
         fields = { "abbr", "kind", "menu" },
         format = function(_, vim_item)
@@ -54,6 +65,7 @@ return {
           return vim_item
         end
       },
+
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
@@ -71,7 +83,7 @@ return {
         border = "rounded",
         source = "always",
         header = "",
-        prefix = ""
+        prefix = "",
       }
     })
 
@@ -81,6 +93,6 @@ return {
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {})
     vim.keymap.set("n", "ca", vim.lsp.buf.code_action, {})
     vim.keymap.set("n", "rn", vim.lsp.buf.rename, {})
-    vim.keymap.set("n", "ff", vim.lsp.buf.format, {})
+    vim.keymap.set("n", "<C-M-j>", vim.lsp.buf.format, {})
   end,
 }
