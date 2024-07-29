@@ -19,6 +19,7 @@ return {
   config = function()
     require("fidget").setup()
     require("mason").setup()
+    local luasnip = require("luasnip")
 
     require("mason-lspconfig").setup({
       ensure_installed = {
@@ -47,7 +48,28 @@ return {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
       },
+      completion = {
+        completeopt = "menu,menuone,noinsert", -- ***
+      },
       mapping = cmp.mapping.preset.insert({
+        ["<C-n>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_next_item()
+          elseif luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
+        ["<C-p>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item()
+          elseif luasnip.jumpable(-1) then
+            luasnip.jump(-1)
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
         ["C-y"] = cmp.mapping.confirm({ select = true })
@@ -103,6 +125,5 @@ return {
     vim.diagnostic.config(lsp.diagnostic)
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, lsp.float)
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, lsp.float)
-
   end,
 }
