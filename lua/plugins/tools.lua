@@ -1,9 +1,7 @@
 return {
-  { "ThePrimeagen/vim-be-good" },
   { "tpope/vim-surround" },
   { "michaeljsmith/vim-indent-object" },
   { "mbbill/undotree" },
-  { "metakirby5/codi.vim" },
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
