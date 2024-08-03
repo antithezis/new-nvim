@@ -5,6 +5,13 @@ end
 local fn = vim.fn
 local autocmd = vim.api.nvim_create_autocmd
 
+autocmd({ "BufReadPost", "BufNewFile" }, {
+  pattern = { "*.component.html" },
+  callback = function()
+    vim.treesitter.start(nil, "angular")
+  end,
+})
+
 autocmd("ColorScheme", {
   pattern = "*",
   callback = function()
@@ -16,17 +23,16 @@ autocmd("ColorScheme", {
     -- vim.api.nvim_set_hl(0, "LspFloatWinNormal", { bg = "red", fg = "red" })
     -- vim.api.nvim_set_hl(0, "LspFloatWinBorder", { bg = "red", fg = "red" })
 
-    -- TelescopePromptPrefix 
-    -- TelescopePromptNormal 
-    -- TelescopeResultsNormal 
-    -- TelescopePreviewNormal 
-    -- TelescopePromptBorder 
-    -- TelescopeResultsBorder 
-    -- TelescopePreviewBorder 
-    -- TelescopePromptTitle  
-    -- TelescopeResultsTitle 
-    -- TelescopePreviewTitle 
-
+    -- TelescopePromptPrefix
+    -- TelescopePromptNormal
+    -- TelescopeResultsNormal
+    -- TelescopePreviewNormal
+    -- TelescopePromptBorder
+    -- TelescopeResultsBorder
+    -- TelescopePreviewBorder
+    -- TelescopePromptTitle
+    -- TelescopeResultsTitle
+    -- TelescopePreviewTitle
   end,
 })
 
