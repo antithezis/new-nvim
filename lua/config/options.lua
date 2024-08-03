@@ -26,3 +26,6 @@ vim.opt.scrolloff = 8
 -- vim.opt.isfname:append {"@-@"}
 
 vim.updatetime = 50
+
+vim.g.mkdp_browser = "edge"
+vim.g.mkdp_auto_start = 1
