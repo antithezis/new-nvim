@@ -20,15 +20,8 @@ return {
           "javascript",
           "typescript",
         },
-        vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
-          pattern = { "*.component.html" },
-          callback = function()
-            vim.treesitter.start(nil, "angular")
-          end,
-
-        }),
-        highlight = { enable = true },
         indent = { enable = true },
+        highlight = { enable = true },
         incremental_selection = {
           enable = true,
           keymaps = {
