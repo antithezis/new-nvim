@@ -15,6 +15,7 @@ return {
         auto_install = true,
         ensure_installed = {
           "lua",
+          "sql",
           "angular",
           "markdown",
           "javascript",
