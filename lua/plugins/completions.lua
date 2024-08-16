@@ -81,6 +81,7 @@ return {
 
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },
+        { name = 'vim-dadbod-completion' },
         { name = 'luasnip' },
         { name = 'emoji' },
       }, {
