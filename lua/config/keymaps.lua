@@ -4,10 +4,17 @@ vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+vim.keymap.set("n", "j", "gj")
+vim.keymap.set("n", "k", "gk")
+vim.keymap.set("v", "j", "gj")
+vim.keymap.set("v", "k", "gk")
+
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
+
+vim.keymap.set("n", "<leader>ms", "<cmd>Markview splitToggle<CR>")
 
 vim.keymap.set("n", "<leader>d", "\"_d")
 vim.keymap.set("v", "<leader>d", "\"_d")
@@ -29,7 +36,7 @@ vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {})
 vim.keymap.set("n", "ca", vim.lsp.buf.code_action, {})
 vim.keymap.set("n", "rn", vim.lsp.buf.rename, {})
-vim.keymap.set("n", "<C-M-j>", vim.lsp.buf.format, {})
+vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, {})
 
 vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})
 vim.keymap.set("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>", {})
