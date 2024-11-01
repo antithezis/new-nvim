@@ -1,6 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
-  event = "BufReadPre",
+  -- event = "BufReadPre",
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
@@ -10,7 +10,7 @@ return {
     "hrsh7th/nvim-cmp",
     "L3MON4D3/LuaSnip",
     "j-hui/fidget.nvim",
-    "github/copilot.vim",
+    -- "github/copilot.vim",
     "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
     "williamboman/mason.nvim",
@@ -24,7 +24,7 @@ return {
     require("mason-lspconfig").setup({
       ensure_installed = {
         "angularls",
-        "tsserver",
+        "ts_ls",
         "cssls",
         "lua_ls",
       },
