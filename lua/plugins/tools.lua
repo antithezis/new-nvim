@@ -5,6 +5,24 @@ return {
   { "kristijanhusak/vim-dadbod-ui" },
   { "michaeljsmith/vim-indent-object" },
   { "mbbill/undotree" },
+  { "metakirby5/codi.vim" },
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false, -- Recommended
+    -- ft = "markdown" -- If you decide to lazy-load anyway
+
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons"
+    },
+    config = function()
+      local presets = require("markview.presets").headings;
+      require("markview").setup({
+        headings = presets.glow_center,
+        hybrid_modes = { "n" }
+      })
+    end
+  },
   {
     "windwp/nvim-autopairs",
     event = "VeryLazy",
@@ -17,7 +35,7 @@ return {
     lazy = false,
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'stevearc/dressing.nvim',   -- optional for vim.ui.select
+      'stevearc/dressing.nvim', -- optional for vim.ui.select
     },
     config = true,
   },
