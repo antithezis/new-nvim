@@ -81,16 +81,42 @@ return {
     end
   },
   {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    "j-hui/fidget.nvim",
+    branch = "legacy",
+    enabled = false,
     config = function()
-      require("lualine").setup({
-        -- palenight for catppuccin
-        options = { theme = "palenight" }
-        -- options = { theme = "everforest" }
+      require("fidget").setup({
+        window = { blend = 0 },
       })
-    end
+    end,
   },
+
+
+  {
+    "karb94/neoscroll.nvim",
+    -- enabled = false,
+    config = function()
+      require("neoscroll").setup({
+        stop_eof = true,
+        easing_function = "sine",
+        hide_cursor = true,
+        cursor_scrolls_alone = true,
+      })
+    end,
+  },
+
+
+  -- {
+  --   'nvim-lualine/lualine.nvim',
+  --   dependencies = { 'nvim-tree/nvim-web-devicons' },
+  --   config = function()
+  --     require("lualine").setup({
+  --       -- palenight for catppuccin
+  --       options = { theme = "palenight" }
+  --       -- options = { theme = "everforest" }
+  --     })
+  --   end
+  -- },
   {
     "folke/persistence.nvim",
     event = "BufReadPre",

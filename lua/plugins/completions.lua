@@ -17,7 +17,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
   },
   config = function()
-    require("fidget").setup()
+    -- require("fidget").setup()
     require("mason").setup()
     local luasnip = require("luasnip")
 
@@ -34,6 +34,8 @@ return {
         end
       },
     })
+
+
 
     local cmp = require('cmp')
     require("luasnip.loaders.from_vscode").lazy_load()
