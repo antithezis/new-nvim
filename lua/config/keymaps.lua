@@ -64,9 +64,7 @@ vim.keymap.set("n", "<C-j>", ":NvimTmuxNavigateDown<CR>", { silent = true })
 vim.keymap.set("n", "<C-k>", ":NvimTmuxNavigateUp<CR>", { silent = true })
 vim.keymap.set("n", "<C-l>", ":NvimTmuxNavigateRight<CR>", { silent = true })
 
-vim.keymap.set("n", "<C-b>", function() require("oil").toggle_float() end, {})
+vim.keymap.set("n", "<D-b>", function() require("oil").toggle_float() end, {})
 
--- opening it in a new tab
-vim.keymap.set('n', '<leader><leader>db', ':tab DBUI<cr>', {})
 -- just close the tab, but context related of the keybinding
 vim.keymap.set('n', '<leader><leader>tq', ':tabclose<cr>')

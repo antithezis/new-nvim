@@ -21,10 +21,10 @@ return {
       -- },
 
       {
-        "<leader>f", function() require("config.util").telescope_git_or_file() end, desc = "Find Files (Root)",
+        "<D-p>", function() require("config.util").telescope_git_or_file() end, desc = "Find Files (Root)",
       },
       {
-        "<leader>o", function() require("telescope.builtin").buffers() end, desc = "Buffers",
+        "<D-S-P>", function() require("telescope.builtin").buffers() end, desc = "Buffers",
       },
       {
         "<leader>sf",
@@ -32,6 +32,13 @@ return {
           require("telescope.builtin").find_files()
         end,
         desc = "Find File (CWD)",
+      },
+      {
+        "g/",
+        function()
+          require("telescope.builtin").live_grep()
+        end,
+        desc = "Live Grep",
       },
       {
         "<leader>sg",
@@ -74,13 +81,6 @@ return {
           require("telescope.builtin").registers()
         end,
         desc = "Registers",
-      },
-      {
-        "<leader>st",
-        function()
-          require("telescope.builtin").live_grep()
-        end,
-        desc = "Live Grep",
       },
       {
         "<leader>sT",
@@ -426,9 +426,7 @@ return {
       telescope.load_extension("fzf")
       telescope.load_extension("ui-select")
       -- telescope.load_extension("refactoring")
-      telescope.load_extension("dap")
       -- telescope.load_extension("frecency")
-      telescope.load_extension("notify")
       -- telescope.load_extension("package_info")
       -- telescope.load_extension('golang_test_files')
       -- telescope.load_extension("makefile_targets")

@@ -1,11 +1,7 @@
 return {
   { "tpope/vim-surround" },
-  { "tpope/vim-dadbod" },
-  { "kristijanhusak/vim-dadbod-completion" },
-  { "kristijanhusak/vim-dadbod-ui" },
   { "michaeljsmith/vim-indent-object" },
   { "mbbill/undotree" },
-  { "metakirby5/codi.vim" },
   {
     "OXY2DEV/markview.nvim",
     lazy = false, -- Recommended
@@ -18,8 +14,12 @@ return {
     config = function()
       local presets = require("markview.presets").headings;
       require("markview").setup({
-        headings = presets.glow_center,
-        hybrid_modes = { "n" }
+        markdown = {
+          headings = presets.marker,
+        },
+        preview = {
+          hybrid_modes = { "n" }
+        }
       })
     end
   },
@@ -46,18 +46,4 @@ return {
       require("nvim-ts-autotag").setup()
     end,
   },
-  -- {
-  --   "vim-test/vim-test",
-  --   dependencies = {
-  --     "preservim/vimux"
-  --   },
-  --   config = function()
-  --     -- vim.keymap.set("n", "<leader>t", ":TestNearest<CR>", {})
-  --     -- vim.keymap.set("n", "<leader>T", ":TestFile<CR>", {})
-  --     -- vim.keymap.set("n", "<leader>a", ":TestSuite<CR>", {})
-  --     -- vim.keymap.set("n", "<leader>l", ":TestLast<CR>", {})
-  --     -- vim.keymap.set("n", "<leader>g", ":TestVisit<CR>", {})
-  --     -- vim.cmd("let test#strategy = 'vimux'")
-  --   end,
-  -- }
 }

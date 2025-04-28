@@ -90,33 +90,17 @@ return {
       })
     end,
   },
-
-
   {
-    "karb94/neoscroll.nvim",
-    -- enabled = false,
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      require("neoscroll").setup({
-        stop_eof = true,
-        easing_function = "sine",
-        hide_cursor = true,
-        cursor_scrolls_alone = true,
+      require("lualine").setup({
+        -- palenight for catppuccin
+        options = { theme = "palenight" }
+        -- options = { theme = "everforest" }
       })
-    end,
+    end
   },
-
-
-  -- {
-  --   'nvim-lualine/lualine.nvim',
-  --   dependencies = { 'nvim-tree/nvim-web-devicons' },
-  --   config = function()
-  --     require("lualine").setup({
-  --       -- palenight for catppuccin
-  --       options = { theme = "palenight" }
-  --       -- options = { theme = "everforest" }
-  --     })
-  --   end
-  -- },
   {
     "folke/persistence.nvim",
     event = "BufReadPre",
