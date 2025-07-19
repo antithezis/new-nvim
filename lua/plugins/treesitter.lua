@@ -1,8 +1,8 @@
 return {
   {
-    event = { "BufReadPre", "BufNewFile" },
-    build = ":TSUpdate",
     "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
       "nvim-treesitter/nvim-treesitter-refactor",
@@ -13,6 +13,7 @@ return {
       local config = require("nvim-treesitter.configs")
       config.setup({
         auto_install = true,
+        lookahead = true,
         ensure_installed = {
           "lua",
           "sql",
